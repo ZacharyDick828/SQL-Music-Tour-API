@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('bands', {
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      end_time: {
+      available_end_time: {
         type: Sequelize.DATE,
         allowNull: false,
       }

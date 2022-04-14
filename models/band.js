@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull: false
     },
-    end_time: {
+    available_end_time: {
         type: DataTypes.DATE,
         allowNull: false
     }
@@ -41,6 +41,5 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'bands',
     timestamps: false
   })
-
-  return Band;
-};
+  return Band
+}
