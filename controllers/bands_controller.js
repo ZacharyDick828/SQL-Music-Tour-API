@@ -1,14 +1,14 @@
 // DEPENDENCIES
 const bands = require('express').Router()
 const db = require('../models')
-const { Band } = db 
+const { Band } = db
 const { Op } = require('sequelize')
-   
+
 // FIND ALL BANDS
 bands.get('/', async (req, res) => {
     try {
         const foundBands = await Band.findAll({
-            order: [ [ 'available_start_time', 'ASC' ] ],
+            order: [['start_time', 'ASC']],
             where: {
                 name: { [Op.like]: `%${req.query.name ? req.query.name : ''}%` }
             }
@@ -18,7 +18,6 @@ bands.get('/', async (req, res) => {
         res.status(500).json(error)
     }
 })
-
 
 // FIND A SPECIFIC BAND
 bands.get('/:id', async (req, res) => {
@@ -44,7 +43,6 @@ bands.post('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err)
     }
-
 })
 
 // UPDATE Route
@@ -58,7 +56,7 @@ bands.put('/:id', async (req, res) => {
         res.status(200).json({
             message: `Successfully updated ${updatedBands} band(s)`
         })
-    } catch(err) {
+    } catch (err) {
         res.status(500).json(err)
     }
 })
@@ -74,11 +72,10 @@ bands.delete('/:id', async (req, res) => {
         res.status(200).json({
             message: `Successfully deleted ${deletedBands} band(s)`
         })
-    } catch(err) {
+    } catch (err) {
         res.status(500).json(err)
     }
 })
-
 
 // EXPORT
 module.exports = bands
